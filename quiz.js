@@ -53,9 +53,10 @@ const questions = [
 
 let current = 0;
 let score = 0;
+let quizEnded = false;
 
 function showQuestion() {
-  if (current >= questions.length) {
+  if (quizEnded || current >= questions.length) {
     showFinal();
     return;
   }
@@ -75,6 +76,8 @@ function showQuestion() {
 }
 
 function checkAnswer(i) {
+  if (quizEnded) return;
+
   const q = questions[current];
   if (i === q.correct) {
     score++;
@@ -88,6 +91,7 @@ function checkAnswer(i) {
 }
 
 function showFinal() {
+  quizEnded = true;
   document.getElementById("question").textContent = "🎉 Quiz completato!";
   document.getElementById("answers").innerHTML = `
     Hai totalizzato <strong>${score}</strong> punti su <strong>${questions.length}</strong>.<br><br>
@@ -98,7 +102,11 @@ function showFinal() {
 function restartQuiz() {
   current = 0;
   score = 0;
+  quizEnded = false;
   showQuestion();
 }
 
 showQuestion();
+
+showQuestion();
+
