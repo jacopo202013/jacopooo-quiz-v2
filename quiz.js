@@ -1,4 +1,3 @@
-// Domande del quiz
 const questions = [
   {
     question: "Qual è la capitale dell’Italia?",
@@ -19,14 +18,48 @@ const questions = [
     question: "Quale pianeta è il più vicino al Sole?",
     answers: ["Venere", "Mercurio", "Marte"],
     correct: 1
+  },
+  {
+    question: "In che anno è iniziata la Seconda Guerra Mondiale?",
+    answers: ["1939", "1945", "1914"],
+    correct: 0
+  },
+  {
+    question: "Qual è l’elemento chimico con simbolo O?",
+    answers: ["Oro", "Ossigeno", "Osmio"],
+    correct: 1
+  },
+  {
+    question: "Quale animale è simbolo della saggezza?",
+    answers: ["Gufo", "Leone", "Cane"],
+    correct: 0
+  },
+  {
+    question: "Qual è il colore complementare del rosso?",
+    answers: ["Verde", "Blu", "Giallo"],
+    correct: 0
+  },
+  {
+    question: "Chi ha inventato il telefono?",
+    answers: ["Edison", "Bell", "Tesla"],
+    correct: 1
+  },
+  {
+    question: "Quale continente ha più paesi?",
+    answers: ["Africa", "Asia", "Europa"],
+    correct: 0
   }
 ];
 
-// Stato del quiz
 let current = 0;
+let score = 0;
 
-// Mostra la domanda corrente
 function showQuestion() {
+  if (current >= questions.length) {
+    showFinal();
+    return;
+  }
+
   const q = questions[current];
   document.getElementById("question").textContent = q.question;
 
@@ -41,19 +74,31 @@ function showQuestion() {
   });
 }
 
-// Controlla la risposta
 function checkAnswer(i) {
   const q = questions[current];
   if (i === q.correct) {
+    score++;
     alert("✅ Corretto!");
   } else {
     alert("❌ Sbagliato!");
   }
 
-  // Passa alla prossima domanda
-  current = (current + 1) % questions.length;
+  current++;
   showQuestion();
 }
 
-// Avvia il quiz
+function showFinal() {
+  document.getElementById("question").textContent = "🎉 Quiz completato!";
+  document.getElementById("answers").innerHTML = `
+    Hai totalizzato <strong>${score}</strong> punti su <strong>${questions.length}</strong>.<br><br>
+    <button onclick="restartQuiz()">Ricomincia</button>
+  `;
+}
+
+function restartQuiz() {
+  current = 0;
+  score = 0;
+  showQuestion();
+}
+
 showQuestion();
