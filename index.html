@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jacopooo Quiz App</title>
+
+  <!-- Manifest per rendere il sito installabile -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Icona dell'app -->
+  <link rel="icon" href="icon.png" type="image/png" />
+
+  <!-- Colore della barra superiore su Android -->
+  <meta name="theme-color" content="#ff4d4d" />
+
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 2rem;
+      background-color: #fefefe;
+    }
+    h1 {
+      color: #ff4d4d;
+    }
+    .question {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .answers button {
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Jacopooo Quiz App</h1>
+  <div class="question" id="question">Caricamento domanda...</div>
+  <div class="answers" id="answers"></div>
+
+  <!-- Collegamento al file JavaScript -->
+  <script src="quiz.js"></script>
+</body>
+</html>
