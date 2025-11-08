@@ -1,54 +1,14 @@
 const questions = [
-  {
-    question: "Qual è la capitale dell’Italia?",
-    answers: ["Milano", "Roma", "Napoli"],
-    correct: 1
-  },
-  {
-    question: "Quanto fa 7 × 6?",
-    answers: ["42", "36", "48"],
-    correct: 0
-  },
-  {
-    question: "Chi ha scritto 'La Divina Commedia'?",
-    answers: ["Dante", "Manzoni", "Leopardi"],
-    correct: 0
-  },
-  {
-    question: "Quale pianeta è il più vicino al Sole?",
-    answers: ["Venere", "Mercurio", "Marte"],
-    correct: 1
-  },
-  {
-    question: "In che anno è iniziata la Seconda Guerra Mondiale?",
-    answers: ["1939", "1945", "1914"],
-    correct: 0
-  },
-  {
-    question: "Qual è l’elemento chimico con simbolo O?",
-    answers: ["Oro", "Ossigeno", "Osmio"],
-    correct: 1
-  },
-  {
-    question: "Quale animale è simbolo della saggezza?",
-    answers: ["Gufo", "Leone", "Cane"],
-    correct: 0
-  },
-  {
-    question: "Qual è il colore complementare del rosso?",
-    answers: ["Verde", "Blu", "Giallo"],
-    correct: 0
-  },
-  {
-    question: "Chi ha inventato il telefono?",
-    answers: ["Edison", "Bell", "Tesla"],
-    correct: 1
-  },
-  {
-    question: "Quale continente ha più paesi?",
-    answers: ["Africa", "Asia", "Europa"],
-    correct: 0
-  }
+  { question: "Qual è la capitale dell’Italia?", answers: ["Milano", "Roma", "Napoli"], correct: 1 },
+  { question: "Quanto fa 7 × 6?", answers: ["42", "36", "48"], correct: 0 },
+  { question: "Chi ha scritto 'La Divina Commedia'?", answers: ["Dante", "Manzoni", "Leopardi"], correct: 0 },
+  { question: "Quale pianeta è il più vicino al Sole?", answers: ["Venere", "Mercurio", "Marte"], correct: 1 },
+  { question: "In che anno è iniziata la Seconda Guerra Mondiale?", answers: ["1939", "1945", "1914"], correct: 0 },
+  { question: "Qual è l’elemento chimico con simbolo O?", answers: ["Oro", "Ossigeno", "Osmio"], correct: 1 },
+  { question: "Quale animale è simbolo della saggezza?", answers: ["Gufo", "Leone", "Cane"], correct: 0 },
+  { question: "Qual è il colore complementare del rosso?", answers: ["Verde", "Blu", "Giallo"], correct: 0 },
+  { question: "Chi ha inventato il telefono?", answers: ["Edison", "Bell", "Tesla"], correct: 1 },
+  { question: "Quale continente ha più paesi?", answers: ["Africa", "Asia", "Europa"], correct: 0 }
 ];
 
 let current = 0;
@@ -107,6 +67,3 @@ function restartQuiz() {
 }
 
 showQuestion();
-
-showQuestion();
-
