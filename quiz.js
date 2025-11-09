@@ -62,9 +62,14 @@ function checkAnswer(i) {
 
 function showFinal() {
   quizEnded = true;
+  let badge = "🟡 Buon tentativo!";
+  if (score >= 15) badge = "🟢 Esperto!";
+  if (score === questions.length) badge = "🔴 Jacopooo Master!";
+
   document.getElementById("question").textContent = "🎉 Quiz completato!";
   document.getElementById("answers").innerHTML = `
     Hai totalizzato <strong>${score}</strong> punti su <strong>${questions.length}</strong>.<br><br>
+    <div style="font-size:1.5em;">${badge}</div><br>
     <button onclick="restartQuiz()">Ricomincia</button>
   `;
 }
