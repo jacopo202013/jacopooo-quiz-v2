@@ -5,43 +5,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jacopooo Quiz App</title>
 
-  <!-- Manifest per rendere il sito installabile -->
+  <!-- PWA essentials -->
   <link rel="manifest" href="manifest.json" />
-
-  <!-- Icona dell'app -->
   <link rel="icon" href="icon.png" type="image/png" />
-
-  <!-- Colore della barra superiore su Android -->
   <meta name="theme-color" content="#ff4d4d" />
 
+  <!-- Styling -->
   <style>
     body {
       font-family: sans-serif;
       text-align: center;
-      padding: 2rem;
-      background-color: #fefefe;
+      padding: 2em;
+      margin: 0;
+      background: url("sfondo.jpg") center center / cover no-repeat;
+      color: #333;
     }
     h1 {
-      color: #ff4d4d;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 1em;
+      border-radius: 10px;
+      margin-bottom: 1em;
     }
-    .question {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    .answers button {
-      margin: 0.5rem;
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
+    button {
+      margin: 0.5em;
+      padding: 0.7em 1.2em;
+      font-size: 1em;
+      background: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 5px;
       cursor: pointer;
+    }
+    button:hover {
+      background: #e03c3c;
+    }
+    #answers button {
+      display: block;
+      margin: 0.5em auto;
+      width: 80%;
+      max-width: 300px;
     }
   </style>
 </head>
 <body>
-  <h1>Jacopooo Quiz App</h1>
-  <div class="question" id="question">Caricamento domanda...</div>
-  <div class="answers" id="answers"></div>
+  <h1 id="question">Caricamento...</h1>
+  <div id="answers"></div>
 
-  <!-- Collegamento al file JavaScript -->
   <script src="quiz.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js")
+        .then(() => console.log("✅ Service worker registrato"))
+        .catch(err => console.error("❌ Errore SW:", err));
+    }
+  </script>
 </body>
 </html>
