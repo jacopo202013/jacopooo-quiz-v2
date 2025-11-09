@@ -19,12 +19,21 @@
       margin: 0;
       background: url("sfondo.jpg") center center / cover no-repeat;
       color: #333;
+      transition: background 0.5s, color 0.5s;
+    }
+    body.dark {
+      background: #111;
+      color: #eee;
     }
     h1 {
       background: rgba(255, 255, 255, 0.85);
       padding: 1em;
       border-radius: 10px;
       margin-bottom: 1em;
+      transition: background 0.5s;
+    }
+    body.dark h1 {
+      background: rgba(0, 0, 0, 0.6);
     }
     button {
       margin: 0.5em;
@@ -35,6 +44,7 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      transition: background 0.3s;
     }
     button:hover {
       background: #e03c3c;
@@ -44,10 +54,26 @@
       margin: 0.5em auto;
       width: 80%;
       max-width: 300px;
+      opacity: 0;
+      animation: fadeIn 0.8s forwards;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    #themeToggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: #333;
+      color: white;
+      padding: 0.5em;
+      border-radius: 5px;
+      font-size: 0.9em;
     }
   </style>
 </head>
 <body>
+  <button id="themeToggle">🌗 Tema</button>
   <h1 id="question">Caricamento...</h1>
   <div id="answers"></div>
 
@@ -58,6 +84,10 @@
         .then(() => console.log("✅ Service worker registrato"))
         .catch(err => console.error("❌ Errore SW:", err));
     }
+
+    document.getElementById("themeToggle").onclick = () => {
+      document.body.classList.toggle("dark");
+    };
   </script>
 </body>
 </html>
