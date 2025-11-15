@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jacopooo Quiz App</title>
 
   <!-- PWA essentials -->
@@ -10,84 +10,81 @@
   <link rel="icon" href="icon.png" type="image/png" />
   <meta name="theme-color" content="#ff4d4d" />
 
-  <!-- Styling -->
   <style>
     body {
-      font-family: sans-serif;
-      text-align: center;
-      padding: 2em;
+      font-family: system-ui, sans-serif;
       margin: 0;
-      background: url("sfondo.jpg") center center / cover no-repeat;
+      padding: 16px;
+      text-align: center;
+      background: url("sfondo.jpg") center center / cover no-repeat fixed;
       color: #333;
       transition: background 0.5s, color 0.5s;
     }
-    body.dark {
-      background: #111;
-      color: #eee;
-    }
-    h1 {
-      background: rgba(255, 255, 255, 0.85);
-      padding: 1em;
-      border-radius: 10px;
-      margin-bottom: 1em;
-      transition: background 0.5s;
-    }
-    body.dark h1 {
-      background: rgba(0, 0, 0, 0.6);
-    }
+    body.dark { background: #111; color: #eee; }
+
+    h1 { margin-bottom: 1em; }
+
     button {
-      margin: 0.5em;
-      padding: 0.7em 1.2em;
-      font-size: 1em;
-      background: #ff4d4d;
-      color: white;
+      margin: 6px;
+      padding: 10px 14px;
+      font-size: 16px;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
+      background: #ff4d4d;
+      color: #fff;
       cursor: pointer;
       transition: background 0.3s;
     }
-    button:hover {
-      background: #e03c3c;
-    }
+    button:hover { background: #e03c3c; }
+
     #answers button {
       display: block;
-      margin: 0.5em auto;
+      margin: 8px auto;
       width: 80%;
       max-width: 300px;
       opacity: 0;
-      animation: fadeIn 0.8s forwards;
+      animation: fadeIn 0.5s forwards;
     }
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
+    @keyframes fadeIn { to { opacity: 1; } }
+
     #themeToggle {
       position: fixed;
       top: 10px;
       right: 10px;
       background: #333;
-      color: white;
-      padding: 0.5em;
-      border-radius: 5px;
-      font-size: 0.9em;
+      color: #fff;
+      font-size: 14px;
     }
+    body.dark #themeToggle { background: #444; }
   </style>
 </head>
 <body>
   <button id="themeToggle">🌗 Tema</button>
+
   <h1 id="question">Caricamento...</h1>
+
+  <div>
+    <button onclick="startQuiz(false)">🎓 Modalità Normale</button>
+    <button onclick="startQuiz(true)">🤪 Modalità Nonsense</button>
+    <button onclick="restartQuiz()">🔁 Ricomincia</button>
+  </div>
+
   <div id="answers"></div>
+  <div id="final" style="margin-top:20px;"></div>
 
   <script src="quiz.js"></script>
   <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("service-worker.js")
-        .then(() => console.log("✅ Service worker registrato"))
-        .catch(err => console.error("❌ Errore SW:", err));
-    }
-
-    document.getElementById("themeToggle").onclick = () => {
+    // Tema
+    document.getElementById("themeToggle").onclick=()=>{
       document.body.classList.toggle("dark");
     };
+
+    // Service Worker
+    if("serviceWorker" in navigator){
+      navigator.serviceWorker.register("service-worker.js")
+        .then(()=>console.log("✅ Service worker registrato"))
+        .catch(err=>console.error("❌ Errore SW:",err));
+    }
   </script>
 </body>
 </html>
