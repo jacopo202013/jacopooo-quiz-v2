@@ -1,3 +1,4 @@
+// --- Domande normali ---
 const questionsNormal = [
   { question: "Qual è la capitale dell’Italia?", answers: ["Milano","Roma","Napoli"], correct: 1 },
   { question: "Quanto fa 7 × 6?", answers: ["42","36","48"], correct: 0 },
@@ -21,6 +22,7 @@ const questionsNormal = [
   { question: "Qual è la moneta del Giappone?", answers: ["Yen","Won","Renminbi"], correct: 0 }
 ];
 
+// --- Domande nonsense ---
 const questionsNonsense = [
   { question: "Quante banane servono per costruire un ponte?", answers: ["42","1000","Dipende dal vento"], correct: 2 },
   { question: "Se un gatto suona il pianoforte, quale nota preferisce?", answers: ["Miao maggiore","Do","Fa"], correct: 0 },
@@ -29,14 +31,17 @@ const questionsNonsense = [
   { question: "Se piove spaghetti, cosa usi come ombrello?", answers: ["Forchetta gigante","Pentola","Grattugia"], correct: 1 }
 ];
 
+// --- Variabili di stato ---
 let questions = [];
 let nonsenseMode = false;
 let current = 0;
 let score = 0;
 let quizEnded = false;
 
+// --- Funzione shuffle ---
 function shuffle(arr){ return arr.sort(() => Math.random() - 0.5); }
 
+// --- Mostra domanda ---
 function showQuestion(){
   if (quizEnded || current >= questions.length) { showFinal(); return; }
   const q = questions[current];
@@ -51,6 +56,7 @@ function showQuestion(){
   });
 }
 
+// --- Controlla risposta ---
 function checkAnswer(i){
   if (quizEnded) return;
   if (i===questions[current].correct) score++;
@@ -58,6 +64,7 @@ function checkAnswer(i){
   showQuestion();
 }
 
+// --- Schermata finale ---
 function showFinal(){
   quizEnded=true;
   document.getElementById("answers").innerHTML="";
@@ -76,4 +83,24 @@ function showFinal(){
   highscores=highscores.slice(0,5);
   localStorage.setItem("highscores",JSON.stringify(highscores));
   document.getElementById("final").innerHTML+=
-    "<h3>🏆 Classifica locale</h3><ul>"+highscores.map
+    "<h3>🏆 Classifica locale</h3><ul>"+highscores.map((s,i)=>`<li>${i+1}. ${s} punti</li>`).join("")+"</ul>";
+}
+
+// --- Avvio quiz ---
+function startQuiz(nonsense=false){
+  nonsenseMode=nonsense;
+  current=0; score=0; quizEnded=false;
+  questions=shuffle(nonsense?[...questionsNonsense]:[...questionsNormal]);
+  showQuestion();
+}
+
+// --- Restart ---
+function restartQuiz(){ startQuiz(nonsenseMode); }
+
+// --- Esporta funzioni globali per HTML ---
+window.startQuiz = startQuiz;
+window.restartQuiz = restartQuiz;
+
+// --- Avvio di default ---
+startQuiz(false);
+
