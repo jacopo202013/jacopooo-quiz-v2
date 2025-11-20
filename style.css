@@ -36,7 +36,7 @@ body.colorful #answers button { background: #ffcc00; color: #000; }
 body.colorful #controls button { background: #00c853; color: #fff; }
 
 /* Bottoni generali */
-#answers button, #controls button, #themes button {
+#answers button, #controls button {
   margin: 10px;
   padding: 12px 20px;
   font-size: 1em;
@@ -46,6 +46,17 @@ body.colorful #controls button { background: #00c853; color: #fff; }
   transition: transform 0.2s, background 0.3s;
 }
 
-#answers button:hover, #controls button:hover, #themes button:hover {
+#answers button:hover, #controls button:hover {
   transform: scale(1.05);
+}
+
+/* Menu tema */
+#themeSelector {
+  margin-bottom: 20px;
+}
+
+#themeSelector select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 1em;
 }
