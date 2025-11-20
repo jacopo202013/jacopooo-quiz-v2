@@ -1,4 +1,4 @@
-// --- Pool di 50 domande di cultura generale ---
+// --- Pool di 60 domande di cultura generale ---
 const questionsNormal = [
     {question: "Qual è la capitale della Francia?", answers: ["Roma","Parigi","Madrid"], correct: 1 },
   { question: "Chi ha dipinto la Gioconda?", answers: ["Michelangelo","Leonardo da Vinci","Raffaello"], correct: 1 },
@@ -145,13 +145,20 @@ function startQuiz(nonsense=false){
 // --- Restart ---
 function restartQuiz(){ startQuiz(nonsenseMode); }
 
-// --- Esporta funzioni globali per HTML ---
-window.startQuiz = startQuiz;
-window.restartQuiz = restartQuiz;
+// --- Gestione tema ---
+function setTheme(theme){
+  document.body.className = theme;
+  localStorage.setItem("theme", theme);
+}
+
+// Carica tema salvato
+window.onload = () => {
+  const savedTheme = localStorage.getItem("theme") || "light";
+  setTheme(savedTheme);
+};
 
 // --- Reset iniziale della classifica ---
 localStorage.removeItem("highscores");
 
 // --- Avvio di default ---
 startQuiz(false);
-
