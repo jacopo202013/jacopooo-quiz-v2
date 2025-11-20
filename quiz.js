@@ -166,3 +166,17 @@ window.restartQuiz = restartQuiz;
 // --- Avvio di default ---
 startQuiz(false);
 
+// --- Gestione tema ---
+function setTheme(theme){
+  document.body.className = theme;
+  localStorage.setItem("theme", theme);
+  document.getElementById("theme").value = theme;
+}
+
+// Carica tema salvato
+window.onload = () => {
+  const savedTheme = localStorage.getItem("theme") || "light";
+  setTheme(savedTheme);
+};
+
+
