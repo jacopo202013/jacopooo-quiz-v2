@@ -1,16 +1,6 @@
-// --- Pool di 70 domande di cultura generale ---
+// --- Pool di 60 domande di cultura generale (qui metti le tue) ---
 const questionsNormal = [
-  { question: "Qual è la capitale della Francia?", answers: ["Roma","Parigi","Madrid"], correct: 1 },
-  { question: "Chi ha dipinto la Gioconda?", answers: ["Michelangelo","Leonardo da Vinci","Raffaello"], correct: 1 },
-  { question: "Qual è il pianeta più vicino al Sole?", answers: ["Venere","Mercurio","Marte"], correct: 1 },
-  { question: "In che anno è iniziata la Seconda Guerra Mondiale?", answers: ["1939","1945","1914"], correct: 0 },
-  { question: "Chi ha scritto 'I Promessi Sposi'?", answers: ["Manzoni","Dante","Leopardi"], correct: 0 },
-  { question: "Qual è il fiume più lungo del mondo?", answers: ["Nilo","Amazonas","Mississippi"], correct: 1 },
-  { question: "Qual è la moneta del Giappone?", answers: ["Yen","Won","Renminbi"], correct: 0 },
-  { question: "Chi ha inventato il telefono?", answers: ["Edison","Bell","Tesla"], correct: 1 },
-  { question: "Quale continente ha più paesi?", answers: ["Africa","Asia","Europa"], correct: 0 },
-  { question: "Qual è la lingua più parlata al mondo?", answers: ["Inglese","Cinese","Spagnolo"], correct: 1 },
-  { question: "Qual è la capitale della Francia?", answers: ["Roma","Parigi","Madrid"], correct: 1 },
+    {question: "Qual è la capitale della Francia?", answers: ["Roma","Parigi","Madrid"], correct: 1 },
   { question: "Chi ha dipinto la Gioconda?", answers: ["Michelangelo","Leonardo da Vinci","Raffaello"], correct: 1 },
   { question: "Qual è il pianeta più vicino al Sole?", answers: ["Venere","Mercurio","Marte"], correct: 1 },
   { question: "In che anno è iniziata la Seconda Guerra Mondiale?", answers: ["1939","1945","1914"], correct: 0 },
@@ -60,6 +50,7 @@ const questionsNormal = [
   { question: "Qual è il continente dove si trova il Sahara?", answers: ["Asia","Africa","America"], correct: 1 },
   { question: "Qual è la capitale della Corea del Sud?", answers: ["Seoul","Busan","Tokyo"], correct: 0 },
   { question: "Chi ha scritto 'Il fu Mattia Pascal'?", answers: ["Pirandello","Svevo","Verga"], correct: 0 }
+  // ... continua fino a 60 domande
 ];
 
 // --- Domande nonsense ---
@@ -78,6 +69,7 @@ let current = 0;
 let score = 0;
 let quizEnded = false;
 let playerName = "";
+let isAdmin = false;
 
 // --- Funzione shuffle ---
 function shuffle(arr){ return arr.sort(() => Math.random() - 0.5); }
@@ -144,20 +136,48 @@ function startQuiz(nonsense=false){
 
   // Chiede nome solo la prima volta
   if (!localStorage.getItem("playerName")) {
-    playerName = prompt("Inserisci il tuo nome:", "Anonimo") || "Anonimo";
+    let chosenName = prompt("Inserisci il tuo nome:", "Anonimo") || "Anonimo";
+
+    // Se qualcuno prova a usare "jacopo(admin)" → rifiutato
+    if (chosenName.toLowerCase() === "jacopo(admin)") {
+      alert("Questo nome è riservato all'admin. Scegli un altro nome!");
+      chosenName = "Anonimo";
+    }
+
+    playerName = chosenName;
     localStorage.setItem("playerName", playerName);
   } else {
     playerName = localStorage.getItem("playerName");
   }
 
+  // Se il nome è proprio Jacopo(admin) → admin
+  if (playerName.toLowerCase() === "jacopo(admin)") {
+    isAdmin = true;
+    document.getElementById("adminControls").style.display = "block";
+    document.getElementById("final").innerHTML = "<p>👑 Benvenuto Admin Jacopo!</p>";
+  } else {
+    isAdmin = false;
+    document.getElementById("adminControls").style.display = "none";
+  }
+
   const pool = nonsense ? questionsNonsense : questionsNormal;
   questions = pickRandomQuestions(pool, 10); // pesca 10 domande casuali
-  document.getElementById("final").innerHTML=""; 
   showQuestion();
 }
 
 // --- Restart ---
 function restartQuiz(){ startQuiz(nonsenseMode); }
+
+// --- Cancella classifica (solo admin) ---
+function clearHighscores(){
+  if (!isAdmin) {
+    alert("Solo l'admin può cancellare la classifica!");
+    return;
+  }
+  localStorage.removeItem("highscores");
+  alert("Classifica cancellata!");
+}
+window.clearHighscores = clearHighscores;
 
 // --- Esporta funzioni globali per HTML ---
 window.startQuiz = startQuiz;
@@ -165,4 +185,3 @@ window.restartQuiz = restartQuiz;
 
 // --- Avvio di default ---
 startQuiz(false);
-
