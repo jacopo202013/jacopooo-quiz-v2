@@ -1,6 +1,6 @@
-// --- Pool di 60 domande di cultura generale ---
+// --- Pool di 50 domande di cultura generale ---
 const questionsNormal = [
-  { question: "Qual è la capitale della Francia?", answers: ["Roma","Parigi","Madrid"], correct: 1 },
+    {question: "Qual è la capitale della Francia?", answers: ["Roma","Parigi","Madrid"], correct: 1 },
   { question: "Chi ha dipinto la Gioconda?", answers: ["Michelangelo","Leonardo da Vinci","Raffaello"], correct: 1 },
   { question: "Qual è il pianeta più vicino al Sole?", answers: ["Venere","Mercurio","Marte"], correct: 1 },
   { question: "In che anno è iniziata la Seconda Guerra Mondiale?", answers: ["1939","1945","1914"], correct: 0 },
@@ -30,7 +30,7 @@ const questionsNormal = [
   { question: "Qual è la capitale dell’Australia?", answers: ["Sydney","Canberra","Melbourne"], correct: 1 },
   { question: "Chi ha scritto 'Odissea'?", answers: ["Omero","Virgilio","Platone"], correct: 0 },
   { question: "Qual è il pianeta più grande del sistema solare?", answers: ["Saturno","Giove","Urano"], correct: 1 },
-  { question: "Qual è la capitale del Brasile?", answers: ["Rio de Janeiro","Brasilia","San Paolo"], correct: 1 },
+  { question: "Qual è la capitale del Brasile?", answers: ["Rio","Brasilia","San Paolo"], correct: 1 },
   { question: "Chi ha inventato la lampadina?", answers: ["Edison","Tesla","Bell"], correct: 0 },
   { question: "Qual è il lago più grande d’Italia?", answers: ["Garda","Como","Maggiore"], correct: 0 },
   { question: "Qual è la capitale della Russia?", answers: ["Mosca","San Pietroburgo","Kiev"], correct: 0 },
@@ -38,41 +38,18 @@ const questionsNormal = [
   { question: "Qual è il continente con più popolazione?", answers: ["Asia","Africa","Europa"], correct: 0 },
   { question: "Qual è la capitale dell’Egitto?", answers: ["Il Cairo","Alessandria","Luxor"], correct: 0 },
   { question: "Chi ha scritto 'Il nome della rosa'?", answers: ["Eco","Calvino","Moravia"], correct: 0 },
-  { question: "Quali mari bagnano la Sicilia?", answers: ["Tirreno","Ionio","Entrambi"], correct: 2 },
+  { question: "Qual è il mare che bagna la Sicilia?", answers: ["Tirreno","Ionio","Entrambi"], correct: 2 },
   { question: "Qual è la capitale della Cina?", answers: ["Shanghai","Pechino","Hong Kong"], correct: 1 },
-  { question: "Chi ha scritto 'Orgoglio e pregiudizio'?", answers: ["Jane Austen","Charlotte Brontë","Dickens"], correct: 0 },
+  { question: "Chi ha scritto 'Orgoglio e pregiudizio'?", answers: ["Jane Austen","Bronte","Dickens"], correct: 0 },
   { question: "Qual è il continente più piccolo?", answers: ["Australia","Europa","Antartide"], correct: 0 },
   { question: "Qual è la capitale del Messico?", answers: ["Guadalajara","Città del Messico","Cancun"], correct: 1 },
   { question: "Chi ha scritto 'Il Gattopardo'?", answers: ["Tomasi di Lampedusa","Moravia","Svevo"], correct: 0 },
-  { question: "Quale mare bagna la Liguria?", answers: ["Tirreno","Adriatico","Ionio"], correct: 0 },
+  { question: "Qual è il mare che bagna la Liguria?", answers: ["Tirreno","Adriatico","Ionio"], correct: 0 },
   { question: "Qual è la capitale della Turchia?", answers: ["Istanbul","Ankara","Smirne"], correct: 1 },
   { question: "Chi ha scritto 'La metamorfosi'?", answers: ["Kafka","Nietzsche","Freud"], correct: 0 },
-  { question: "Dove si trova il deserto del Sahara?", answers: ["Asia","Africa","America"], correct: 1 },
+  { question: "Qual è il continente dove si trova il Sahara?", answers: ["Asia","Africa","America"], correct: 1 },
   { question: "Qual è la capitale della Corea del Sud?", answers: ["Seoul","Busan","Tokyo"], correct: 0 },
-  { question: "Chi ha scritto 'Il fu Mattia Pascal'?", answers: ["Pirandello","Svevo","Verga"], correct: 0 },
-  { question: "Qual è la capitale della Norvegia?", answers: ["Oslo","Stoccolma","Copenaghen"], correct: 0 },
-  { question: "Chi ha scritto 'Il barone rampante'?", answers: ["Calvino","Eco","Moravia"], correct: 0 },
-  { question: "Qual è la capitale dell’India?", answers: ["Mumbai","Nuova Delhi","Calcutta"], correct: 1 },
-  { question: "Chi ha scoperto la penicillina?", answers: ["Pasteur","Fleming","Curie"], correct: 1 },
-  { question: "Qual è la capitale del Portogallo?", answers: ["Porto","Lisbona","Madrid"], correct: 1 },
-  { question: "Chi ha scritto 'Il deserto dei Tartari'?", answers: ["Buzzati","Svevo","Pirandello"], correct: 0 },
-  { question: "Qual è la capitale della Polonia?", answers: ["Varsavia","Cracovia","Danzica"], correct: 0 },
-  { question: "Chi ha scritto 'Se questo è un uomo'?", answers: ["Primo Levi","Moravia","Calvino"], correct: 0 },
-  { question: "Qual è la capitale della Grecia?", answers: ["Atene","Salonicco","Creta"], correct: 0 },
-  { question: "Chi ha scritto 'Il visconte dimezzato'?", answers: ["Calvino","Eco","Manzoni"], correct: 0 },
-  { question: "Qual è la capitale della Svizzera?", answers: ["Zurigo","Berna","Ginevra"], correct: 1 },
-  { question: "Chi ha scritto 'La fattoria degli animali'?", answers: ["Orwell","Huxley","Dickens"], correct: 0 },
-  { question: "Qual è la capitale dell’Irlanda?", answers: ["Dublino","Cork","Belfast"], correct: 0 },
-  { question: "Chi ha scritto 'Il giovane Holden'?", answers: ["Salinger","Hemingway","Fitzgerald"], correct: 0 },
-  { question: "Qual è la capitale della Svezia?", answers: ["Oslo","Stoccolma","Helsinki"], correct: 1 },
-  { question: "Chi ha scritto 'Cent’anni di solitudine'?", answers: ["Garcia Marquez","Borges","Neruda"], correct: 0 },
-  { question: "Qual è la capitale della Finlandia?", answers: ["Tallinn","Helsinki","Reykjavik"], correct: 1 },
-  { question: "Chi ha scritto 'Il processo'?", answers: ["Kafka","Goethe","Nietzsche"], correct: 0 },
-  { question: "Qual è la capitale dei Paesi Bassi?", answers: ["Amsterdam","Rotterdam","L’Aia"], correct: 0 },
-  { question: "Qual è il simbolo chimico dell’argento?", answers: ["Ag","Au","Pt"], correct: 0 },
-  { question: "Qual è il fiume più lungo d’Europa?", answers: ["Volga","Danubio","Reno"], correct: 0 },
-  { question: "Qual è l’oceano più grande?", answers: ["Atlantico","Pacifico","Indiano"], correct: 1 },
-  { question: "Chi ha scritto 'Moby Dick'?", answers: ["Melville","Twain","London"], correct: 0 }
+  { question: "Chi ha scritto 'Il fu Mattia Pascal'?", answers: ["Pirandello","Svevo","Verga"], correct: 0 }
 ];
 
 // --- Domande nonsense ---
@@ -91,13 +68,12 @@ let current = 0;
 let score = 0;
 let quizEnded = false;
 let playerName = "";
-let isAdmin = false;
 
 // --- Utility ---
 function shuffle(arr){ return arr.sort(() => Math.random() - 0.5); }
 function pickRandomQuestions(allQuestions, n=10){ return shuffle(allQuestions).slice(0, n); }
 
-// --- UI domanda/risposte ---
+// --- Mostra domanda ---
 function showQuestion(){
   if (quizEnded || current >= questions.length) { showFinal(); return; }
   const q = questions[current];
@@ -112,6 +88,7 @@ function showQuestion(){
   });
 }
 
+// --- Controlla risposta ---
 function checkAnswer(i){
   if (quizEnded) return;
   if (i===questions[current].correct) score++;
@@ -119,7 +96,7 @@ function checkAnswer(i){
   showQuestion();
 }
 
-// --- Schermata finale + classifica ---
+// --- Schermata finale ---
 function showFinal(){
   quizEnded=true;
   document.getElementById("answers").innerHTML="";
@@ -128,13 +105,12 @@ function showFinal(){
   if(score===questions.length && !nonsenseMode) badge="🔴 Jacopooo Master!";
   if(nonsenseMode) badge="🤪 Nonsense Hero!";
 
-  // Punteggio
   document.getElementById("final").innerHTML=
     `Hai totalizzato <strong>${score}</strong> punti su <strong>${questions.length}</strong>.<br><br>
      <div style="font-size:1.5em;">${badge}</div><br>
      <button onclick="restartQuiz()">Ricomincia</button>`;
 
-  // Classifica locale
+  // --- Classifica locale con nomi ---
   let highscores=JSON.parse(localStorage.getItem("highscores")||"[]");
   highscores.push({name: playerName, score});
   highscores.sort((a,b)=>b.score-a.score);
@@ -147,65 +123,33 @@ function showFinal(){
     "</ul>";
 }
 
-// --- Avvio quiz + gestione nome/admin ---
+// --- Avvio quiz ---
 function startQuiz(nonsense=false){
   nonsenseMode=nonsense;
   current=0; score=0; quizEnded=false;
 
   // Chiede nome solo la prima volta
   if (!localStorage.getItem("playerName")) {
-    let chosenName = prompt("Inserisci il tuo nome:", "Anonimo") || "Anonimo";
-
-    // Admin riservato
-    if (chosenName.toLowerCase() === "jacopo(admin)") {
-      playerName = "jacopo(admin)";
-      isAdmin = true;
-      alert("👑 Benvenuto Admin Jacopo!");
-    } else {
-      // Blocca tentativi di finta-admin
-      if (chosenName.toLowerCase().includes("admin")) {
-        alert("Questo nome è riservato all'admin. Scegli un altro nome!");
-        chosenName = "Anonimo";
-      }
-      playerName = chosenName;
-      isAdmin = false;
-    }
-
+    playerName = prompt("Inserisci il tuo nome:", "Anonimo") || "Anonimo";
     localStorage.setItem("playerName", playerName);
   } else {
     playerName = localStorage.getItem("playerName");
-    isAdmin = (playerName.toLowerCase() === "jacopo(admin)");
   }
 
-  // Mostra/nasconde controlli admin
-  const adminPanel = document.getElementById("adminControls");
-  if (adminPanel) adminPanel.style.display = isAdmin ? "block" : "none";
-
-  // Pesca domande
   const pool = nonsense ? questionsNonsense : questionsNormal;
-  questions = pickRandomQuestions(pool, 10);
-  document.getElementById("final").innerHTML="";
+  questions = pickRandomQuestions(pool, 10); // pesca 10 domande casuali
+  document.getElementById("final").innerHTML=""; 
   showQuestion();
 }
 
 // --- Restart ---
 function restartQuiz(){ startQuiz(nonsenseMode); }
 
-// --- Cancella classifica (solo admin) ---
-function clearHighscores(){
-  if (!isAdmin) {
-    alert("Solo l'admin può cancellare la classifica!");
-    return;
-  }
-  localStorage.removeItem("highscores");
-  alert("Classifica cancellata!");
-}
-// Espone funzioni per HTML
+// --- Esporta funzioni globali per HTML ---
 window.startQuiz = startQuiz;
 window.restartQuiz = restartQuiz;
-window.clearHighscores = clearHighscores;
 
-// --- Reset iniziale della classifica (su tua richiesta) ---
+// --- Reset iniziale della classifica ---
 localStorage.removeItem("highscores");
 
 // --- Avvio di default ---
