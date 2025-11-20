@@ -6,8 +6,18 @@
   <title>Jacopooo Quiz</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="light">
   <h1>🎓 Jacopooo Quiz</h1>
+
+  <!-- Menu a tendina per il tema -->
+  <div id="themeSelector">
+    <label for="theme">Tema:</label>
+    <select id="theme" onchange="setTheme(this.value)">
+      <option value="light">🌞 Light</option>
+      <option value="dark">🌙 Dark</option>
+      <option value="colorful">🌈 Colorato</option>
+    </select>
+  </div>
 
   <!-- Contenitore domanda -->
   <div id="question"></div>
