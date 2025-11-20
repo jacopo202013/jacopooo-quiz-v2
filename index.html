@@ -6,7 +6,7 @@
   <title>Jacopooo Quiz</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="light">
   <h1>🎓 Jacopooo Quiz</h1>
 
   <!-- Contenitore domanda -->
@@ -23,6 +23,13 @@
     <button onclick="startQuiz(false)">🎓 Modalità Normale</button>
     <button onclick="startQuiz(true)">🤪 Modalità Nonsense</button>
     <button onclick="restartQuiz()">🔁 Ricomincia</button>
+  </div>
+
+  <!-- Bottoni tema -->
+  <div id="themes">
+    <button onclick="setTheme('light')">🌞 Tema Light</button>
+    <button onclick="setTheme('dark')">🌙 Tema Dark</button>
+    <button onclick="setTheme('colorful')">🌈 Tema Colorato</button>
   </div>
 
   <!-- Script principale -->
