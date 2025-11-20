@@ -1,0 +1,51 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+/* --- Tema Light --- */
+body.light {
+  background: #f5f5f5;
+  color: #333;
+}
+
+body.light h1 { color: #222; }
+body.light #answers button { background: #ffcc00; color: #000; }
+body.light #controls button { background: #00c853; color: #fff; }
+
+/* --- Tema Dark --- */
+body.dark {
+  background: #121212;
+  color: #eee;
+}
+
+body.dark h1 { color: #fff; }
+body.dark #answers button { background: #444; color: #fff; }
+body.dark #controls button { background: #009624; color: #fff; }
+
+/* --- Tema Colorato --- */
+body.colorful {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: #222;
+}
+
+body.colorful h1 { color: #222; text-shadow: 2px 2px #fff; }
+body.colorful #answers button { background: #ffcc00; color: #000; }
+body.colorful #controls button { background: #00c853; color: #fff; }
+
+/* Bottoni generali */
+#answers button, #controls button, #themes button {
+  margin: 10px;
+  padding: 12px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+#answers button:hover, #controls button:hover, #themes button:hover {
+  transform: scale(1.05);
+}
